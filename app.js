@@ -5,7 +5,8 @@ const readline = require('readline');
 
 const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
-const youtubeId = `2RNI7lYg25k`; //動画ID
+const youtubeId = process.argv[2]
+
 const url = BASE_PATH + youtubeId;
 
 const video = ytdl(url, {filter: (format) => format.container === 'mp4' });
