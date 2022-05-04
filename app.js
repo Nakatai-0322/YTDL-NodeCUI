@@ -1,7 +1,10 @@
 const fs = require('fs');
 
+const ffmpeg = require("fluent-ffmpeg");
+
 const ytdl = require('ytdl-core');
 const readline = require('readline');
+const path = require('path');
 
 const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
@@ -48,3 +51,9 @@ video.on('end', () => {
         console.log(info.player_response.videoDetails.thumbnail);
     });
 });
+
+ffmpeg(`./${youtubeId}.mp4`)
+    .output(`./${youtubeId}.mp3`)
+    .on('end', () => {
+        console.log('Processing finished !')
+    })
