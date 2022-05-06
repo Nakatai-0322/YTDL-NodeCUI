@@ -5,6 +5,8 @@ const ytdl = require('ytdl-core');
 const readline = require('readline');
 const ffmpeg = require('fluent-ffmpeg');
 
+const path = require("path")
+
 // URLを"node app"以後のargで代入
 const url = process.argv[2];
 
@@ -39,6 +41,8 @@ video.on('progress', (chunkLength, downloaded, total) => {
 video.on('end', () => {
     ffmpeg(`./videos/${youtubeId}.mp4`)
         .save(`./audio/${youtubeId}.mp3`);
+
+    fs.unlink(path.resolve(`/videos/${youtubeId}.mp4`));
 
     process.stdout.write('\n\n');
 });
