@@ -1,12 +1,19 @@
 const fs = require('fs');
 
 const ytdl = require('ytdl-core');
-const readline = require('readline'); //表示用途
+const readline = require('readline');
 
-const BASE_PATH = `https://www.youtube.com/watch?v=`;
+const url = process.argv[2];
 
-const youtubeId = process.argv[2];
-const url = BASE_PATH + youtubeId;
+var parsedUrl = youtube_parser(url);
+
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match && match[7].length==11)? match[7] : false;
+}
+
+let youtubeId = youtube_parser(url);
 
 const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 
