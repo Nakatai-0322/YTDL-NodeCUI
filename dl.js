@@ -41,20 +41,4 @@ video.on('end', () => {
         .save(youtubeId + ".mp3");
 
     process.stdout.write('\n\n');
-
-    ytdl.getInfo(youtubeId, (err, info) => {
-        if (err) throw err;
-
-        console.log('\n動画情報もろもろ');
-        console.log(info.player_response.videoDetails);
-
-        console.log('\n動画タイトル');
-        console.log(info.player_response.videoDetails.title);
-
-        console.log('\n秒数');
-        console.log(info.player_response.videoDetails.lengthSeconds);
-
-        console.log('\nサムネイル');
-        console.log(info.player_response.videoDetails.thumbnail);
-    });
 });
