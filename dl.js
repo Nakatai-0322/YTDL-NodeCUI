@@ -21,7 +21,7 @@ const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 
 let starttime;
 
-video.pipe(fs.createWriteStream(`${youtubeId}.mp4`));
+video.pipe(fs.createWriteStream(`./videos/${youtubeId}.mp4`));
 
 video.once('response', () => starttime = Date.now());
 
@@ -37,8 +37,8 @@ video.on('progress', (chunkLength, downloaded, total) => {
 });
 
 video.on('end', () => {
-    ffmpeg(youtubeId + ".mp4")
-        .save(youtubeId + ".mp3");
+    ffmpeg(`./videos/${youtubeId}.mp4`)
+        .save(`./audio/${youtubeId}.mp3`);
 
     process.stdout.write('\n\n');
 });
