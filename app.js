@@ -1,12 +1,13 @@
+// 依存関係のインポート
 const fs = require('fs');
 
 const ytdl = require('ytdl-core');
 const readline = require('readline');
 
+// URLを"node app"以後のargで代入
 const url = process.argv[2];
 
-var parsedUrl = youtube_parser(url);
-
+// YouTubeのURLからIDをパース
 function youtube_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
@@ -37,7 +38,6 @@ video.on('progress', (chunkLength, downloaded, total) => {
 video.on('end', () => {
     process.stdout.write('\n\n');
 
-    //DLしたYoutube動画の情報
     ytdl.getInfo(youtubeId, (err, info) => {
         if (err) throw err;
 
