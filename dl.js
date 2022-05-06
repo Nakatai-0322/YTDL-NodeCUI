@@ -3,11 +3,12 @@ const fs = require('fs');
 
 const ytdl = require('ytdl-core');
 const readline = require('readline');
+const ffmpeg = require('fluent-ffmpeg');
 
 // URLを"node app"以後のargで代入
 const url = process.argv[2];
 
-// YouTubeのURLからIDをパース
+// YouTubeのURLからIDをパースする関数
 function youtube_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
@@ -36,6 +37,9 @@ video.on('progress', (chunkLength, downloaded, total) => {
 });
 
 video.on('end', () => {
+    ffmpeg(youtubeId + ".mp4")
+        .save(youtubeId + ".mp3");
+
     process.stdout.write('\n\n');
 
     ytdl.getInfo(youtubeId, (err, info) => {
