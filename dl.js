@@ -43,9 +43,4 @@ video.on('end', () => {
         .save(`./audio/${youtubeId}.mp3`);
 
     process.stdout.write('\n\n');
-
-    fs.unlink(`./videos/${youtubeId}.mp4`, (err) => {
-        if (err) throw err;
-        console.log("mp4ファイル削除完了");
-    });
 });
