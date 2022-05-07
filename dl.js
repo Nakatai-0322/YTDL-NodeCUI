@@ -31,10 +31,10 @@ video.on('progress', (chunkLength, downloaded, total) => {
     const floatDownloaded = downloaded / total;
     const downloadedMinutes = (Date.now() - starttime) / 1000 / 60;
     readline.cursorTo(process.stdout, 0);
-    process.stdout.write(`${(floatDownloaded * 100).toFixed(2)}% downloaded`);
-    process.stdout.write(`(${(downloaded / 1024 / 1024).toFixed(2)}MB of ${(total / 1024 / 1024).toFixed(2)}MB)\n`);
-    process.stdout.write(`running for: ${downloadedMinutes.toFixed(2)}minutes`);
-    process.stdout.write(`, estimated time left: ${(downloadedMinutes / floatDownloaded - downloadedMinutes).toFixed(2)}minutes `);
+    process.stdout.write(`${(floatDownloaded * 100).toFixed(2)}%のダウンロード完了`);
+    process.stdout.write(`(${(downloaded / 1024 / 1024).toFixed(2)}MB/${(total / 1024 / 1024).toFixed(2)}MB)\n`);
+    process.stdout.write(`稼働時間: ${downloadedMinutes.toFixed(2)}分`);
+    process.stdout.write(`, 推定残り時間: ${(downloadedMinutes / floatDownloaded - downloadedMinutes).toFixed(2)}分 `);
     readline.moveCursor(process.stdout, 0, -1);
 });
 
