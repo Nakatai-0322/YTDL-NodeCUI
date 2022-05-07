@@ -5,8 +5,6 @@ const ytdl = require('ytdl-core');
 const readline = require('readline');
 const ffmpeg = require('fluent-ffmpeg');
 
-const path = require("path")
-
 // URLを"node app"以後のargで代入
 const url = process.argv[2];
 
