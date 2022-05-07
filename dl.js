@@ -8,18 +8,13 @@ const ffmpeg = require('fluent-ffmpeg');
 // URLを"node app"以後のargで代入
 const url = process.argv[2];
 
-// YouTubeのURLからIDをパースする関数
-function youtube_parser(url){
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length==11)? match[7] : false;
-}
-
-let youtubeId = youtube_parser(url);
+let youtubeId = ytdl.getVideoID(url);
 
 const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 
 let starttime;
+
+ytdl.getInfo(youtubeId)
 
 video.pipe(fs.createWriteStream(`./videos/${youtubeId}.mp4`));
 
