@@ -10,7 +10,7 @@ const url = process.argv[2];
 
 let youtubeId = ytdl.getVideoID(url);
 
-const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
+const video = ytdl(url, {filter: (format) => format.container === 'mp4'});
 
 let starttime;
 let title = youtubeId;
@@ -30,8 +30,9 @@ video.on('progress', (chunkLength, downloaded, total) => {
     readline.moveCursor(process.stdout, 0, -1);
 });
 video.on('end', () => {
-    ffmpeg(`./videos/${title}.mp4`)
-        .save(`./audio/${title}.mp3`);
-
+    if(process.argv[3]!="--nomp3"){
+        ffmpeg(`./videos/${title}.mp4`)
+            .save(`./audio/${title}.mp3`);
+    }
     process.stdout.write('\n\n');
 });
