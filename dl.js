@@ -13,19 +13,10 @@ let youtubeId = ytdl.getVideoID(url);
 const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 
 let starttime;
-let title
-
-ytdl.getInfo(youtubeId, (err, info) => {
-
-    if (err) throw err;
-
-    title = info.player_response.videoDetails.title
-});
+let title = youtubeId;
 
 video.pipe(fs.createWriteStream(`./videos/${title}.mp4`));
-
 video.once('response', () => starttime = Date.now());
-
 video.on('progress', (chunkLength, downloaded, total) => {
     const floatDownloaded = downloaded / total;
     const downloadedMinutes = (Date.now() - starttime) / 1000 / 60;
@@ -36,7 +27,6 @@ video.on('progress', (chunkLength, downloaded, total) => {
     process.stdout.write(`, 推定残り時間: ${(downloadedMinutes / floatDownloaded - downloadedMinutes).toFixed(2)}分 `);
     readline.moveCursor(process.stdout, 0, -1);
 });
-
 video.on('end', () => {
     ffmpeg(`./videos/${title}.mp4`)
         .save(`./audio/${title}.mp3`);
