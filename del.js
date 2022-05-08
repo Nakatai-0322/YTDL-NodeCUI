@@ -1,7 +1,7 @@
 'use strict';
 
-const fs = require('fs');
-const dir = './videos/';
+const fs = require("fs");
+const dir = "./videos/";
 
 fs.readdir(dir, function(err, files) {
     if (err) {
@@ -12,7 +12,7 @@ fs.readdir(dir, function(err, files) {
             if (err) {
                 throw (err);
             }
-            console.log(`deleted ${file}`);
+            console.log(`${file}を削除済み。`);
         });
     });
 });
