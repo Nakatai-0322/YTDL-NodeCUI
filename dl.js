@@ -12,7 +12,7 @@ let youtubeId = ytdl.getVideoID(url);
 
 const video = ytdl(url, {filter: (format) => format.container === 'mp4'});
 
-let starttime;
+let starttime = NaN;
 let title = youtubeId;
 
 let videoinfo = ytdl.getInfo(url)
