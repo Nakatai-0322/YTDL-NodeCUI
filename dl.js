@@ -1,9 +1,9 @@
 // 依存関係のインポート
-const fs = require('fs');
+const fs = require("fs");
 
-const ytdl = require('ytdl-core');
-const readline = require('readline');
-const ffmpeg = require('fluent-ffmpeg');
+const ytdl = require("ytdl-core");
+const readline = require("readline");
+const ffmpeg = require("fluent-ffmpeg");
 
 // URLを"node app"以後のargで代入
 const url = process.argv[2];
