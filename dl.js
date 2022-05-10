@@ -33,6 +33,9 @@ video.on('end', () => {
     if(process.argv[3]!="--nomp3"){
         ffmpeg(`./videos/${title}.mp4`)
             .save(`./audio/${title}.mp3`);
-    }
+    };
+
+    title = videoinfo.player_response.videoDetails.title
+
     process.stdout.write('\n\n');
 });
