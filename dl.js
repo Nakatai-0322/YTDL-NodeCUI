@@ -30,7 +30,7 @@ video.on('progress', (chunkLength, downloaded, total) => {
     readline.moveCursor(process.stdout, 0, -1);
 });
 video.on('end', () => {
-    if(process.argv[3]!="--nomp3"){
+    if(process.argv[3] != "--nomp3"){
         ffmpeg(`./videos/${title}.mp4`)
             .save(`./audio/${title}.mp3`);
     };
