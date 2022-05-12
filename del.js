@@ -7,7 +7,7 @@ const boolofmp3 = process.argv[2];
 fs.readdir(dir, function(err, files) {
     if (err) {
         throw err;
-    }
+    };
     files.forEach(function(file) {
         fs.unlink(`${dir}/${file}`, function(err) {
             if (err) {
