@@ -15,7 +15,7 @@ const video = ytdl(url, {filter: (format) => format.container === 'mp4'});
 let starttime = NaN;
 let title = youtubeId;
 
-let videoinfo = ytdl.getInfo(url)
+let videoinfo = ytdl.getInfo(url);
 
 video.pipe(fs.createWriteStream(`./videos/${title}.mp4`));
 video.once('response', () => starttime = Date.now());
