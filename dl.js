@@ -35,7 +35,7 @@ video.on('end', () => {
             .save(`./audio/${title}.mp3`);
     };
 
-    title = videoinfo.player_response.videoDetails.title
+    title = videoinfo.player_response.videoDetails.title;
 
     process.stdout.write('\n\n');
 });
