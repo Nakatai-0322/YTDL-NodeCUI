@@ -4,18 +4,12 @@ const fs = require("fs");
 const ytdl = require("ytdl-core");
 const readline = require("readline");
 const ffmpeg = require("fluent-ffmpeg");
-
-// URLを"node app"以後のargで代入
 const url = process.argv[2];
-
 let youtubeId = ytdl.getVideoID(url);
-
-const video = ytdl(url, {filter: (format) => format.container === 'mp4'});
+const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 
 let starttime = NaN;
 let title = youtubeId;
-
-let videoinfo = ytdl.getInfo(url);
 
 video.pipe(fs.createWriteStream(`./videos/${title}.mp4`));
 video.once('response', () => starttime = Date.now());
@@ -30,12 +24,12 @@ video.on('progress', (chunkLength, downloaded, total) => {
     readline.moveCursor(process.stdout, 0, -1);
 });
 video.on('end', () => {
-    if(process.argv[3] != "--nomp3"){
+    if (process.argv[3] != "--nomp3") {
         ffmpeg(`./videos/${title}.mp4`)
             .save(`./audio/${title}.mp3`);
     };
 
-    title = videoinfo.player_response.videoDetails.title;
+
 
     process.stdout.write('\n\n');
 });
