@@ -22,10 +22,9 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
-Express@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/Express/-/Express-3.0.1.tgz#e64ef7cb37684a69fc22d4111ddde4498896496a"
-  integrity sha1-5k73yzdoSmn8ItQRHd3kSYiWSWo=
+express@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/Express/-/Express-3.11.0.tgz#e64ef7cb37684a69fc22d4111ddde4498896496a"
 
 abab@^2.0.5, abab@^2.0.6:
   version "2.0.6"
