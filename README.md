@@ -1,5 +1,12 @@
 # Node.jsでのYouTubeダウンローダー
 
+## 下準備
+
+1. [yarn](https://classic.yarnpkg.com/en/docs/install)をインストールしてください。
+2. `yarn`と実行してください。
+
+下準備は以上です。
+
 ## 使い方
 
 1. `node dl <YouTubeのURL>`でダウンロードできます。
