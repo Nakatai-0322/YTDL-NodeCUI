@@ -28,8 +28,5 @@ video.on('end', () => {
         ffmpeg(`./videos/${title}.mp4`)
             .save(`./audio/${title}.mp3`);
     };
-
-
-
     process.stdout.write('\n\n');
 });
