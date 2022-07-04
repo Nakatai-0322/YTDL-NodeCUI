@@ -20,6 +20,7 @@
     "homepage": "https://github.com/Nakatai-0322/YTDL-WebGui#readme",
     "dependencies": {
         "Express": "^3.0.1",
+        "axios": "^0.27.2",
         "ffmpeg-static": "^5.0.0",
         "fluent-ffmpeg": "^2.1.2",
         "googleapis": "^104.0.0",
