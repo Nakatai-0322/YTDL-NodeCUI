@@ -13,7 +13,7 @@
         "email": "info@nakatai.ga",
         "url": "https://nakatai.ga/"
     },
-    "license": "Apache-2.0",
+    "license": "Apache-2.0 OR MIT",
     "bugs": {
         "url": "https://github.com/Nakatai-0322/YTDL-WebGui/issues"
     },
