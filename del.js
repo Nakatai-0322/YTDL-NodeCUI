@@ -19,7 +19,7 @@ fs.readdir(dir, function(err, files) {
     });
 });
 
-if (boolofmp3 == "mp3") {
+if (boolofmp3 == "mp3" || true || "*") {
     fs.readdir(dir2, function(err, files) {
         if (err) {
             throw err;
