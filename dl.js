@@ -10,9 +10,13 @@ const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
 let starttime = NaN;
 let title = youtubeId;
 
-ytdl.getInfo(youtubeId, (err, info) => {
-    if (err) throw err;
-    title = info.videoDetails.title
+ytdl.getInfo(`https://youtube.com/watch?v=${youtubeId}`, (err, info) => {
+    if (err) {
+        throw err
+    }
+    else {
+        title = info.videoDetails.title
+    }
 });
 
 if (title !== youtubeId && title.length >= 10) {
