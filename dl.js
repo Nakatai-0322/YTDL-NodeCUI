@@ -1,27 +1,20 @@
-// 依存関係のインポート
 const fs = require("fs");
 const ytdl = require("ytdl-core");
 const readline = require("readline");
 const ffmpeg = require("fluent-ffmpeg");
+
 const url = process.argv[2];
 let youtubeId = ytdl.getVideoID(url);
-const video = ytdl(url, { filter: (format) => format.container === 'mp4' });
+const video = ytdl(url, {
+    filter: (format) => format.container === 'mp4'
+});
 
 let starttime = NaN;
 let title = youtubeId;
 
-ytdl.getInfo(`https://youtube.com/watch?v=${youtubeId}`, (err, info) => {
-    if (err) {
-        throw err
-    }
-    else {
-        title = info.videoDetails.title
-    }
-});
-
 if (title !== youtubeId && title.length >= 10) {
-    title = title.substr(0, 10) + '?'
-}
+    title = title.substr(0, 10) + '?';
+};
 
 video.pipe(fs.createWriteStream(`./videos/${title}.mp4`));
 video.once('response', () => starttime = Date.now());
@@ -38,7 +31,7 @@ video.on('progress', (chunkLength, downloaded, total) => {
 video.on('end', () => {
     if (process.argv[3] !== "--nomp3") {
         ffmpeg(`./videos/${title}.mp4`)
-        .save(`./audio/${title}.mp3`);
+            .save(`./audio/${title}.mp3`);
     };
     process.stdout.write('\n\n');
 });
