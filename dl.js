@@ -6,7 +6,7 @@ const ffmpeg = require("fluent-ffmpeg");
 const url = process.argv[2];
 let youtubeId = ytdl.getVideoID(url);
 const video = ytdl(url, {
-    filter: (format) => format.container === 'mp4'
+    filter: format => format.container === 'mp4'
 });
 
 let starttime = NaN;
