@@ -19,14 +19,9 @@
     },
     "homepage": "https://github.com/Nakatai-0322/YTDL-WebGui#readme",
     "dependencies": {
-        "axios": "^0.27.2",
         "express": "^4.18.1",
         "ffmpeg-static": "^5.0.0",
         "fluent-ffmpeg": "^2.1.2",
-        "googleapis": "^105.0.0",
-        "jquery": "^3.6.0",
-        "jsdom": "^19.0.0",
-        "node-fetch": "^3.2.4",
         "readline": "^1.3.0",
         "ytdl-core": "^4.11.0"
     }
